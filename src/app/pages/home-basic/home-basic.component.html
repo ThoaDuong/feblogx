@@ -1,0 +1,40 @@
+
+<section class="container">
+  <div class="row">
+    <section class="post col-md-8 col-12">
+      <app-post *ngFor="let post of list_posts | paginate: { itemsPerPage: 10, currentPage: p }" [post]="post"></app-post>
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </section>
+    <aside class="aside col-4 d-none d-md-block">
+      <form class="search-form">
+        <fieldset class="border p-2">
+          <legend  class="w-auto search-form__legend">Post</legend>
+          <div class="input-group mb-3">
+            <input [(ngModel)]="key_word" name="key_word"
+            type="text" class="form-control shadow-none search-form__text"
+            placeholder="Search">
+            <div class="input-group-append">
+              <button (click)="onSearchHandle()"
+              class="btn btn-outline-primary shadow-none search-form__btn"
+              type="submit">
+                <i class="fas fa-search"></i>
+            </button>
+            </div>
+          </div>
+        </fieldset>
+      </form>
+      <section class="trending">
+        <h2 class="trending__title">For you</h2>
+        <article class="post" *ngFor="let post of latest_posts">
+          <a href="">
+            <img *ngIf="false" class="post__img" src="../../../assets/images/user2.jpg" alt="user's avatar">
+          </a>
+          <h3 class="post__name">
+            <a routerLink="../detail" [queryParams]="{id: post._id}">{{post.title}} </a>
+          </h3>
+          <p class="post__date"><i class="far fa-calendar-minus"></i>{{post.created_at | date : 'MMM d, h:mm a'}} </p>
+        </article>
+      </section>
+    </aside>
+  </div>
+</section>

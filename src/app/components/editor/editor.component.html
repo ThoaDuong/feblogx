@@ -1,0 +1,25 @@
+<div class="container">
+  <section class="editor">
+    <h1 class="text-center">Write a new post</h1>
+    <form>
+      <h5>Add a image cover </h5>
+      <input class="editor__choose" type="file" accept="image/*" (change)="loadFile($event)"/> <br>
+      <img *ngIf="img_cover" class="editor__img" [src]="img_cover" alt="img">
+      <input [(ngModel)]="title" name="title" type="text" class="form-control" placeholder="Title" />
+      <input [(ngModel)]="description" name="description" type="text" class="form-control mt-3" placeholder="Description of main content" />
+
+      <section class="editor__quill">
+        <quill-editor [modules]="editorModules" (onEditorChanged)="onEditorChanged($event)"></quill-editor>
+      </section>
+      <button class="btn btn-outline-success" (click)="onPublishPost()" >Publish</button>
+    </form>
+    <!-- <quill-view-html [content]="content" format="text" theme="snow"></quill-view-html> -->
+  </section>
+</div>
+
+
+
+
+
+
+

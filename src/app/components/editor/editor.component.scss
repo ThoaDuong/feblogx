@@ -1,0 +1,26 @@
+@import '../../../variable.scss';
+
+.editor{
+  &__choose{
+    margin-bottom: 15px;
+  }
+  &__img{
+    width: 60%;
+    height: 100px;
+    object-fit: cover;
+    margin: 0 auto;
+    margin-bottom: 15px;
+  }
+  &__quill{
+    margin: 15px 0;
+    background-color: $white;
+  }
+
+}
+.ql-container{
+  height: auto !important;
+}
+.ql-editor{
+  height: 200px !important;
+  overflow-y: scroll !important;
+}

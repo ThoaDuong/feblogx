@@ -1,0 +1,18 @@
+<article class="post-block">
+  <div class="post-block__img">
+    <img *ngIf="post && post.img_cover" [src]="post.img_cover" alt="Post">
+  </div>
+  <h2 class="post-block__title">
+    <a routerLink="../detail" [queryParams]="{ id: post._id}"> {{post.title}} </a>
+  </h2>
+  <div class="post-block__more">
+    <span><i class="far fa-calendar-alt pr-1"></i> {{post.created_at | date : 'MMM d, y, h:mm a'}} </span>
+    <span class="float-md-right float-none d-md-inline d-block" *ngIf="user">
+      <i class="fas fa-user-tie pr-2"></i>
+      <a routerLink="../profile" [queryParams]="{id: user._id}">{{user.last_name + ' ' + user.first_name}} </a>
+    </span>
+  </div>
+  <p class="post-block__description">
+    {{post.description}}
+  </p>
+</article>

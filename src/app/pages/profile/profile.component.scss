@@ -1,0 +1,44 @@
+@import '../../../variable.scss';
+
+.main-profile{
+  background-color: $light-grey;
+  .profile{
+    border: 2px solid $green  ;
+    text-align: center;
+    background-color: $white;
+    margin: 20px 0;
+    &__img{
+      height: 100px;
+      width: 100px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 2px solid $green;
+      position: absolute;
+      top:  -100px;
+      left: 50%;
+      transform: translate(-50%, 0);
+    }
+    &__name{
+      font-size: 32px;
+      font-weight: 600;
+      padding: 20px 0;
+    }
+    &__info{
+      color: $grey;
+      font-size: 14px;
+      .item{
+        padding: 20px;
+      }
+      i{
+        padding-right: 3px;
+      }
+      a{
+        color: $grey;
+        font-size: 20px;
+        &:hover{
+          color: $blue;
+        }
+      }
+    }
+  }
+}

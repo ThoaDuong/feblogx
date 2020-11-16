@@ -1,0 +1,99 @@
+@import '../../../variable.scss';
+
+.navbar{
+  padding: 1rem 1rem !important;
+}
+header {
+  width: 100%;
+  position: fixed;
+  background-color: $black-opacity;
+  z-index: 999;
+  .navbar-nav {
+    .nav-item {
+      .nav-link{
+        color: $white;
+        font-weight: 600;
+        font-size: 17px;
+        position: relative;
+        &::after{
+          content: '';
+          display: block;
+          position: absolute;
+          bottom: 0px;
+          left: 0;
+          width: 0%;
+          border-bottom: 2px solid $white;
+          transition: ease-in 0.3s;
+        }
+        &::before{
+          content: '';
+          display: block;
+          position: absolute;
+          bottom: 0px;
+          right: 0;
+          width: 0%;
+          border-bottom: 2px solid $white;
+          transition: ease-in 0.3s;
+        }
+        &:hover{
+          text-decoration: none;
+        }
+        &:hover:after, &:hover:before{
+          width: 50%;
+        }
+      }
+    }
+    .logo{
+      font-size: 30px !important;
+    }
+  }
+
+  .search-head{
+    position: relative;
+    &__input{
+      background-color: transparent;
+      border: 2px solid $white;
+      width: 100%;
+      height: 40px;
+      padding-right: 40px;
+      padding-left: 10px;
+      color: $white;
+    }
+    &__btn{
+      position: absolute;
+      right: 0;
+      color: $white;
+      height: 45px;
+      &:focus{
+        outline: none;
+        box-shadow: none;
+        color: $green;
+      }
+    }
+  }
+
+  .icon-user{
+    &__img{
+      height: 40px;
+      width: 40px;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+    &__link{
+      &::after, &::before{
+        display: none;
+        border-bottom: none;
+      }
+      &:hover:after, &:hover:before{
+        width: 0%;
+      }
+    }
+  }
+  .dropdown-item{
+    color: $white;
+    &:hover{
+      background-color: $dark-blue;
+    }
+  }
+}
+

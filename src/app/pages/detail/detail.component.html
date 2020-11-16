@@ -1,0 +1,48 @@
+
+  <section class="container">
+    <div class="detail">
+      <img *ngIf="post && post.img_cover" class="detail__img" [src]="post.img_cover" alt="Detail post">
+      <div class="row">
+        <section class="post-info col-12 col-md-8">
+          <button *ngIf="role_delete" (click)="onDeletePost(post._id)" class="float-right pt-2 pr-2 text-danger btn">
+            <!-- <small><i class="far fa-trash-alt"></i></small> -->
+            <i class="far fa-trash-alt"></i>
+          </button>
+          <a *ngIf="role_update" class="float-right pt-2 text-warning" routerLink="../post" [queryParams]="{id: post._id}">
+            <small><i class="far fa-edit"></i></small>
+          </a>
+          <article class="detail-post">
+            <h1 class="detail-post__title"> {{ post ? post.title : ''}} </h1>
+            <div class="detail-post__more">
+              <span class="pr-5"><i class="far fa-calendar-alt"></i> {{ post ? post.created_at : '' | date : 'MMM d, y, h:mm a'}} </span>
+              <span><i class="fas fa-user-tie"></i> {{ user ? user.first_name + ' ' + user.last_name : '' }} </span>
+            </div>
+            <div class="detail-post__content">
+              <p class="mb-0"> {{ post ? post.description : ''}} </p>
+              <quill-view-html [content]="post ? post.content : ''" format="text" theme="snow"></quill-view-html>
+            </div>
+          </article>
+        </section>
+        <aside class="col-12 col-md-4 mt-4 mt-md-0">
+          <div class="user">
+            <a *ngIf="user" routerLink="../profile" [queryParams]="{id: user._id}">
+              <img *ngIf="user" class="user__img" src="{{user.avt_url}} " alt="user's avatar">
+            </a>
+            <h3 class="user__name">
+              <a *ngIf="user" routerLink="../profile" [queryParams]="{id: user._id}">{{ user ? user.first_name + ' ' + user.last_name : ''}} </a>
+            </h3>
+            <!-- <p class="user__describe"> {{ user ? user.description : ''}} </p> -->
+            <button class="btn btn-outline-success mb-3 w-100 user__follow">Follow</button>
+            <article class="info">
+              <h4 class="info__title">Email</h4>
+              <p class="info__content">{{user ? user.email : ''}} </p>
+            </article>
+            <article class="info">
+              <h4 class="info__title">Joined</h4>
+              <p class="info__content">{{user ? user.created_at : '' | date : 'MMM d, y, h:mm a'}} </p>
+            </article>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>

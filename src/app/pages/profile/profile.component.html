@@ -1,0 +1,23 @@
+
+<section class="main-profile">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <article class="profile">
+          <img [src]="current_user ? current_user.avt_url : ''" alt="" class="profile__img">
+          <h2 class="profile__name"> {{current_user ? current_user.first_name : ''}} {{current_user ? current_user.last_name:''}} </h2>
+          <p class="profile__description">{{current_user ? current_user.description:''}}</p>
+          <div class="profile__info">
+            <span class="item"><i class="fas fa-map-marker-alt"></i> {{current_user ? current_user.email:''}}</span>
+            <span class="item"><i class="far fa-calendar-check"></i> Joined on {{current_user ? current_user.created_at:'' | date: 'MMM d, y, h:mm a'}}</span>
+            <a href="" class="item"><i class="fab fa-github"></i></a>
+          </div>
+        </article>
+      </div>
+      <div *ngIf="current_posts" class="col-12 col-md-8 col-lg-6 mx-auto">
+        <app-post *ngFor="let post of current_posts | paginate: { itemsPerPage: 5, currentPage: p }" [post]="post"></app-post>
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+      </div>
+    </div>
+  </div>
+</section>
