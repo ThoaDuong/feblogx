@@ -28,7 +28,7 @@ export class HomeBasicComponent implements OnInit {
 
   async onSearchHandle(){
     const default_posts = await this.appService.getAllPosts();
-    this.list_posts = default_posts.filter(p => p.title.match(this.key_word));
+    this.list_posts = default_posts.filter(p => p.title.toLowerCase().match(this.key_word.toLowerCase()));
   }
 
 }
